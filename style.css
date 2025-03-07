@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'younuzwebcastlefill';
 	src: local('younuzwebcastlefill'),
-		 url('younuzwebcastlefill.ttf') format('truetype');
+		 url('./fonts/younuzwebcastlefill.ttf') format('truetype');
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
@@ -10,7 +10,7 @@
 @font-face {
 	font-family: 'younuzwebcastlestrokefill';
 	src: local('younuzwebcastlestrokefill'),
-		 url('younuzwebcastlestrokefill.ttf') format('truetype');
+		 url('./fonts/younuzwebcastlestrokefill.ttf') format('truetype');
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
