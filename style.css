@@ -1,0 +1,268 @@
+@font-face {
+	font-family: 'younuzwebcastlefill';
+	src: local('younuzwebcastlefill'),
+		 url('./fonts/younuzwebcastlefill.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'younuzwebcastlestrokefill';
+	src: local('younuzwebcastlestrokefill'),
+		 url('./fonts/younuzwebcastlestrokefill.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+}
+
+:root {
+	--neon-color-1: #89c0ff;
+	--neon-color-2: #057afe;
+	--neon-color-3: #057afe;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+	background-image: url('./asset/bg.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+html, #app {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#app {
+	overflow: hidden;
+}
+
+#hero {
+	position: relative;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.header-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.subtitle {
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
+	font-weight: 500;
+	margin: 0;
+	opacity: 0.9;
+	letter-spacing: 2px;
+}
+
+/* Button styles */
+.button-64 {
+	align-items: center;
+	background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00eb6a);
+	border: 0;
+	border-radius: 50px;
+	box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	display: flex;
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+	justify-content: center;
+	line-height: 1em;
+	max-width: 100%;
+	min-width: 120px;
+	padding: 2px;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	white-space: nowrap;
+	cursor: pointer;
+	margin-top: 1rem;
+}
+
+.button-64:active,
+.button-64:hover {
+	outline: 0;
+}
+
+.button-64 span {
+	background-color: rgba(0, 0, 0, 0.328);
+	padding: 12px 20px;
+	border-radius: 50px;
+	width: 100%;
+	height: 100%;
+	transition: 300ms;
+}
+
+.button-64:hover span {
+	background: none;
+}
+
+@media (min-width: 768px) {
+	.button-64 {
+		font-size: 18px;
+		min-width: 150px;
+	}
+}
+
+.logo {
+	font-family: 'younuzwebcastlefill';
+	font-size: 300px;
+	font-weight: 400;
+	position: relative;
+	z-index: 1;
+	opacity: 1;
+	letter-spacing: 15px;
+	margin: 0;
+	text-transform: uppercase;
+	display: inline-flex;
+	justify-content: center;
+	white-space: nowrap;
+	width: 100%;
+	padding: 0;
+	text-align: center;
+	color: #ffffff3c;
+}
+
+.logo-letter {
+	position: relative;
+	display: inline-block;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	-webkit-font-smoothing: antialiased;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-letter::before {
+	content: attr(data-letter);
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'younuzwebcastlestrokefill' !important;
+	background: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00eb6a);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	opacity: 0;
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	text-shadow:
+		0 0 0px var(--neon-color-1),
+		0 0 10px var(--neon-color-2),
+		0 0 15px var(--neon-color-2),
+		0 0 21px var(--neon-color-3),
+		0 0 42px var(--neon-color-3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo-letter:hover {
+	color: transparent;
+}
+
+.logo-letter:hover::before {
+	opacity: 1;
+}
+
+#app canvas {
+	display: block;
+	position: fixed;
+	z-index: -1;
+	top: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+    .logo {
+        font-size: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        font-size: 150px;
+        letter-spacing: 10px;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .header-container {
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 80px;
+        letter-spacing: 5px;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .header-container {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .button-64 {
+        font-size: 14px;
+        min-width: 100px;
+        padding: 1px;
+    }
+
+    .button-64 span {
+        padding: 10px 16px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .logo {
+        font-size: 60px;
+        letter-spacing: 3px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Add this to handle height-based responsive design */
+@media screen and (max-height: 600px) {
+    .header-container {
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 120px;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+}
+  
