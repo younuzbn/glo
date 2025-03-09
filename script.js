@@ -112,9 +112,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('ontouchstart' in window) {
     const logo = document.querySelector('.logo');
     let lastTouchedLetter = null;
+    let tappedLetter = null;
+
+    // Handle touch start
+    document.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      const element = document.elementFromPoint(touch.clientX, touch.clientY);
+      
+      if (element && element.classList.contains('logo-letter')) {
+        tappedLetter = element;
+        element.classList.add('touch-hover');
+      }
+    });
 
     // Handle touch move events
     document.addEventListener('touchmove', (e) => {
+      // Clear any previously tapped letter when movement starts
+      if (tappedLetter) {
+        tappedLetter.classList.remove('touch-hover');
+        tappedLetter = null;
+      }
+
       const touch = e.touches[0];
       const element = document.elementFromPoint(touch.clientX, touch.clientY);
       
@@ -139,6 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (lastTouchedLetter) {
         lastTouchedLetter.classList.remove('touch-hover');
         lastTouchedLetter = null;
+      }
+      // Also clear tapped letter if it exists
+      if (tappedLetter) {
+        tappedLetter.classList.remove('touch-hover');
+        tappedLetter = null;
       }
     });
   }
