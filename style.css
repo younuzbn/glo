@@ -379,4 +379,23 @@ html, #app {
         bottom: 15px;
     }
 }
+
+/* Add touch device support */
+@media (hover: none) and (pointer: coarse) {
+    .logo-letter {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .logo-letter::before {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* This will make letters glow on both touch and hover */
+    .logo-letter:hover::before,
+    .logo-letter:active::before,
+    .logo-letter.touch-hover::before {
+        opacity: 1;
+    }
+}
   

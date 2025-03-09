@@ -108,6 +108,41 @@ document.addEventListener('DOMContentLoaded', () => {
     ...getCursorParams()
   });
   
+  // Add touch event handlers for mobile
+  if ('ontouchstart' in window) {
+    const logo = document.querySelector('.logo');
+    let lastTouchedLetter = null;
+
+    // Handle touch move events
+    document.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      const element = document.elementFromPoint(touch.clientX, touch.clientY);
+      
+      // If touching a new letter
+      if (element && element.classList.contains('logo-letter')) {
+        // Remove glow from previous letter
+        if (lastTouchedLetter && lastTouchedLetter !== element) {
+          lastTouchedLetter.classList.remove('touch-hover');
+        }
+        // Add glow to current letter
+        element.classList.add('touch-hover');
+        lastTouchedLetter = element;
+      } else if (lastTouchedLetter) {
+        // Remove glow when not touching any letter
+        lastTouchedLetter.classList.remove('touch-hover');
+        lastTouchedLetter = null;
+      }
+    });
+
+    // Remove glow effect when touch ends
+    document.addEventListener('touchend', () => {
+      if (lastTouchedLetter) {
+        lastTouchedLetter.classList.remove('touch-hover');
+        lastTouchedLetter = null;
+      }
+    });
+  }
+  
   // Update cursor parameters on window resize
   let resizeTimeout;
   window.addEventListener('resize', () => {
